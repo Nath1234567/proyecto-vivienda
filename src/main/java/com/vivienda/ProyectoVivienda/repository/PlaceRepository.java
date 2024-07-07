@@ -1,10 +1,9 @@
 package com.vivienda.ProyectoVivienda.repository;
 
-import com.vivienda.ProyectoVivienda.model.ProyectModel;
+import com.vivienda.ProyectoVivienda.model.PlaceModel;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProyectRepository extends MongoRepository<ProyectModel, String> {
-
+public interface PlaceRepository extends MongoRepository<PlaceModel, String> {
 }
