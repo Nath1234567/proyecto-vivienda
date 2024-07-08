@@ -34,12 +34,19 @@ jobs:
           echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> $GITHUB_ENV
           echo "PORT=${{ secrets.PORT }}" >> $GITHUB_ENV
 
-      - name: Deploy to Vercel.
+      - name: Deploy to Vercel
+        if: success()
+        run: |
+          npm install -g vercel   # Instala Vercel CLI (si no está instalado)
+          vercel --token ${{ secrets.VERCEL_TOKEN }} --prod   # Despliega a producción en Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Push changes to GitHub
         if: success()
         run: |
           git config --global user.email "nathalylozano@uninorte.edu.co"
           git config --global user.name "Nath1234567"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/Nath1234567/proyecto-vivienda.git
           git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
