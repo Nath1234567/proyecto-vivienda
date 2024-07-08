@@ -1,0 +1,7 @@
+{
+  "routes": [
+    { "src": "/api/projects", "dest": "http://localhost:8000/api/projects" },
+    { "src": "/api/place", "dest": "http://localhost:8000/api/place" },
+    { "src": "/api/(.*)", "dest": "http://localhost:8000/api/projects" }
+  ]
+}
