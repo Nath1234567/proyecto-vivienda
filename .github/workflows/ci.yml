@@ -36,6 +36,8 @@ jobs:
 
       - name: Deploy to Vercel
         if: success()
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config --global user.email "nathalylozano@uninorte.edu.co"
           git config --global user.name "Nath1234567"
