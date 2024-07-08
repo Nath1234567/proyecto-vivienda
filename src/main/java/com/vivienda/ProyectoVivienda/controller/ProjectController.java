@@ -34,7 +34,7 @@ public class ProjectController {
         }
     }
 
-    @GetMapping("/api/projects")
+    @GetMapping
     public List<ProjectModel> getProjects() {
         return IProjectService.getProjects();
     }

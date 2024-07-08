@@ -37,7 +37,7 @@ public class PlaceController {
         }
     }
 
-    @GetMapping("/api/place")
+    @GetMapping
     public List<PlaceModel> getPlace() {
         return IPlaceService.getPlace();
     }
