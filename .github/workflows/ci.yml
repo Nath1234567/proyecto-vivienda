@@ -28,18 +28,18 @@ jobs:
       - name: Run tests
         run: mvn test
 
+      - name: Set environment variables
+        run: |
+          echo "MONGO_URI=${{ secrets.MONGO_URI }}" >> $GITHUB_ENV
+          echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> $GITHUB_ENV
+          echo "PORT=${{ secrets.PORT }}" >> $GITHUB_ENV
+
       - name: Deploy to Vercel
         if: success()
         run: |
           git config --global user.email "nathalylozano@uninorte.edu.co"
           git config --global user.name "Nath1234567"
-          git remote set-url origin https://Nath1234567:${{ secrets.GH_PAT }}@github.com/Nath1234567/proyecto-vivienda.git
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/Nath1234567/proyecto-vivienda.git
           git push origin main
         env:
-          JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.11-9/x64
-          JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.11-9/x64
-          MONGO_URI: ${{ secrets.MONGO_URI }}
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
-          PORT: ${{ secrets.PORT }}
-          GH_PAT: ${{ secrets.GH_PAT }}
-          TOKEN_GIT: ${{ secrets.TOKEN_GIT }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
