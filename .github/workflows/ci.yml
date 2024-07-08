@@ -36,6 +36,8 @@ jobs:
 
       - name: Deploy to Vercel
         if: success()
-        run: git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.SECRET }}
+        run: |
+          git config --global user.email "nathalylozano@uninorte.edu.co"
+          git config --global user.name "Nath1234567"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/Nath1234567/proyecto-vivienda.git
+          git push origin main
