@@ -38,7 +38,7 @@ jobs:
         if: success()
         run: |
           npm install -g vercel   # Instala Vercel CLI (si no está instalado)
-          vercel --token ${{ secrets.VERCEL_TOKEN }} --prod   # Despliega a producción en Vercel
+          vercel --token ${{ secrets.VERCEL_TOKEN }} --prod
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
